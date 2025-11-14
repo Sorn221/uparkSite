@@ -1,9 +1,9 @@
 :root {
-    --primary-color: #2c5530;
-    --secondary-color: #73a580;
-    --accent-color: #f9a826;
+    --primary-color: #4CAF50;
+    --secondary-color: #81C784;
+    --accent-color: #7E57C2; 
     --light-color: #f8f9fa;
-    --dark-color: #343a40;
+    --dark-color: #424242;
 }
 
 body {
@@ -65,12 +65,14 @@ body {
     font-weight: 600;
     border-radius: 30px;
     transition: all 0.3s;
+    color: white;
 }
 
 .btn-primary-custom:hover {
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
+    background-color: #43A047;
+    border-color: #43A047;
     transform: translateY(-3px);
+    color: white;
 }
 
 .btn-accent {
@@ -84,9 +86,45 @@ body {
 }
 
 .btn-accent:hover {
-    background-color: #e8960d;
-    border-color: #e8960d;
+    background-color: #6A45B2;
+    border-color: #6A45B2;
     transform: translateY(-3px);
+    color: white;
+}
+
+.btn-outline-dark {
+    border-color: var(--dark-color);
+    color: var(--dark-color);
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--dark-color);
+    border-color: var(--dark-color);
+    color: white;
+}
+
+.carousel-indicators button.active {
+    background-color: var(--accent-color);
+    border-color: white;
+}
+
+.social-icons a:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.footer-links a:hover {
+    color: var(--secondary-color);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(25%) sepia(90%) saturate(2000%) hue-rotate(250deg); /* Фиолетовый */
+}
+
+.partner-logo:hover {
+    filter: grayscale(0%) sepia(100%) hue-rotate(250deg) saturate(500%); /* Фиолетовый эффект */
+    opacity: 1;
 }
 
 .section-title {
@@ -310,7 +348,6 @@ body {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: var(--accent-color);
     color: white;
     display: flex;
     align-items: center;
@@ -341,10 +378,6 @@ footer {
     margin-bottom: 10px;
 }
 
-.footer-links a:hover {
-    color: white;
-}
-
 .social-icons a {
     display: inline-block;
     width: 40px;
@@ -356,11 +389,6 @@ footer {
     margin-right: 10px;
     color: white;
     transition: all 0.3s;
-}
-
-.social-icons a:hover {
-    background-color: var(--accent-color);
-    transform: translateY(-3px);
 }
 
 /* Адаптивность */
@@ -436,10 +464,6 @@ footer {
     border: 2px solid transparent;
 }
 
-.carousel-indicators button.active {
-    background-color: var(--accent-color);
-    border-color: white;
-}
 
 .carousel-control-prev,
 .carousel-control-next {
@@ -475,7 +499,6 @@ footer {
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    filter: invert(25%) sepia(90%) saturate(2000%) hue-rotate(350deg);
     width: 25px;
     height: 25px;
 }
@@ -596,4 +619,13 @@ footer {
     .partners-title {
         font-size: 1.6rem;
     }
+}
+
+/* Обновленные плавающая кнопка */
+.floating-btn {
+    background-color: var(--accent-color);
+}
+
+.floating-btn:hover {
+    background-color: #6A45B2;
 }
