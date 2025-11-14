@@ -5,6 +5,7 @@
 ## Структура проекта
 
 
+```
 uparkSite/
 ├── index.html
 ├── public/
@@ -13,6 +14,7 @@ uparkSite/
 │ └── js/
 │ └── script.js
 └── README.md
+```
 
 
 ## Особенности
