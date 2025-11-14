@@ -129,22 +129,99 @@ body {
 
 .marquee-container {
     background-color: var(--light-color);
-    padding: 20px 0;
+    padding: 30px 0;
     overflow: hidden;
     position: relative;
 }
 
 .marquee {
     display: flex;
-    animation: marquee 30s linear infinite;
+    animation: marquee 40s linear infinite;
+    align-items: center;
+}
+
+.marquee:hover {
+    animation-play-state: paused;
 }
 
 .marquee-item {
     flex: 0 0 auto;
-    margin: 0 40px;
+    margin: 0 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.marquee-item:hover {
+    transform: scale(1.05);
+}
+
+.partner-logo {
+    height: 60px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.partner-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Адаптивность для логотипов */
+@media (max-width: 768px) {
+    .marquee-container {
+        padding: 20px 0;
+    }
+    
+    .marquee-item {
+        margin: 0 20px;
+    }
+    
+    .partner-logo {
+        height: 40px;
+        max-width: 120px;
+    }
+    
+    .marquee {
+        animation-duration: 30s;
+    }
+}
+
+@media (max-width: 576px) {
+    .marquee-item {
+        margin: 0 15px;
+    }
+    
+    .partner-logo {
+        height: 35px;
+        max-width: 100px;
+    }
+    
+    .marquee {
+        animation-duration: 25s;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 400px) {
+    .partner-logo {
+        height: 30px;
+        max-width: 80px;
+    }
+    
+    .marquee-item {
+        margin: 0 12px;
+    }
 }
 
 .logo-placeholder {
@@ -161,11 +238,6 @@ body {
     text-align: center;
     padding: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-@keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
 }
 
 .project-card {
@@ -333,5 +405,195 @@ footer {
         width: 120px;
         height: 50px;
         font-size: 0.8rem;
+    }
+}
+
+/* Стили для слайдера в герой секции */
+#heroCarousel {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background-color: #f8f9fa; /* Фон на случай если изображение не заполняет полностью */
+}
+
+.hero-slide-img {
+    height: 400px;
+    object-fit: contain;
+    width: 100%;
+    background-color: #f8f9fa;
+}
+
+.carousel-indicators {
+    bottom: 15px;
+}
+
+.carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid transparent;
+}
+
+.carousel-indicators button.active {
+    background-color: var(--accent-color);
+    border-color: white;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 15px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+#heroCarousel:hover .carousel-control-prev,
+#heroCarousel:hover .carousel-control-next {
+    opacity: 0.8;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1 !important;
+    background-color: white;
+}
+
+.carousel-control-prev {
+    left: 10px;
+}
+
+.carousel-control-next {
+    right: 10px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(25%) sepia(90%) saturate(2000%) hue-rotate(350deg);
+    width: 25px;
+    height: 25px;
+}
+
+/* Анимация для слайдов */
+.carousel-item {
+    transition: transform 0.6s ease-in-out;
+}
+
+/* Адаптивность для слайдера */
+@media (max-width: 1200px) {
+    .hero-slide-img {
+        height: 350px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-slide-img {
+        height: 300px;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px;
+        height: 40px;
+        margin: 0 10px;
+    }
+    
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-slide-img {
+        height: 250px;
+    }
+    
+    .carousel-indicators {
+        bottom: 10px;
+    }
+    
+    .carousel-indicators button {
+        width: 8px;
+        height: 8px;
+        margin: 0 3px;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 35px;
+        height: 35px;
+        margin: 0 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-slide-img {
+        height: 200px;
+    }
+    
+    #heroCarousel {
+        margin-top: 20px;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        display: none;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 400px) {
+    .hero-slide-img {
+        height: 180px;
+    }
+}
+
+/* Стили для заголовка партнеров */
+.partners-title-section {
+    background-color: var(--light-color);
+    padding: 40px 0 0 0;
+}
+
+.partners-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.partners-title:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+/* Адаптивность для заголовка */
+@media (max-width: 768px) {
+    .partners-title-section {
+        padding: 30px 0 0 0;
+    }
+    
+    .partners-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .partners-title {
+        font-size: 1.6rem;
     }
 }

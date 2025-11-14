@@ -44,7 +44,6 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     const email = this.querySelector('input[type="email"]').value;
     const message = this.querySelector('textarea').value;
     
-    // В реальном проекте здесь был бы AJAX запрос к серверу
     console.log('Данные формы:', { name, phone, email, message });
     
     // Показываем уведомление
@@ -65,14 +64,6 @@ function initMarquee() {
     marquee.style.width = totalWidth + 'px';
 }
 
-// Инициализация при загрузке
-document.addEventListener('DOMContentLoaded', function() {
-    initMarquee();
-    
-    // Переинициализация при изменении размера окна
-    window.addEventListener('resize', initMarquee);
-});
-
 // Добавляем класс для navbar при скролле
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
@@ -81,4 +72,66 @@ window.addEventListener('scroll', function() {
     } else {
         navbar.classList.remove('scrolled');
     }
+});
+
+// Функция для инициализации и настройки слайдера
+function initHeroSlider() {
+    const heroCarousel = document.getElementById('heroCarousel');
+    
+    if (heroCarousel) {
+        // Автопрокрутка каждые 5 секунд
+        const carousel = new bootstrap.Carousel(heroCarousel, {
+            interval: 5000,
+            pause: 'hover',
+            wrap: true,
+            touch: true
+        });
+        
+        // Обработка ошибок загрузки изображений
+        const carouselImages = heroCarousel.querySelectorAll('.hero-slide-img');
+        carouselImages.forEach((img, index) => {
+            img.addEventListener('error', function() {
+                console.warn(`Ошибка загрузки слайда ${index + 1}:`, this.src);
+                // Можно установить заглушку или скрыть слайд
+                this.style.display = 'none';
+            });
+            
+            img.addEventListener('load', function() {
+                console.log(`Слайд ${index + 1} загружен:`, this.src);
+            });
+        });
+        
+        // Добавляем паузу при наведении (дополнительная страховка)
+        heroCarousel.addEventListener('mouseenter', function() {
+            carousel.pause();
+        });
+        
+        heroCarousel.addEventListener('mouseleave', function() {
+            carousel.cycle();
+        });
+        
+        console.log('Герой-слайдер инициализирован');
+    }
+}
+
+//инициализация при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+    initMarquee();
+    handleLogos();
+    initHeroSlider();
+    
+    // Переинициализация при изменении размера окна
+    window.addEventListener('resize', function() {
+        setTimeout(initMarquee, 100);
+    });
+    
+    // Добавляем класс для navbar при скролле
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
 });
