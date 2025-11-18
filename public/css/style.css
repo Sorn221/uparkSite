@@ -629,3 +629,51 @@ footer {
 .floating-btn:hover {
     background-color: #6A45B2;
 }
+
+/* Стили для кнопки WhatsApp */
+.btn-whatsapp {
+    background-color: #25D366;
+    border-color: #25D366;
+    color: white;
+    padding: 15px 40px;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-whatsapp:hover {
+    background-color: #20BD5C;
+    border-color: #20BD5C;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+}
+
+.btn-whatsapp:active {
+    transform: translateY(-1px);
+}
+
+/* Адаптивность для кнопки */
+@media (max-width: 768px) {
+    .btn-whatsapp {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .btn-whatsapp {
+        padding: 12px 25px;
+        font-size: 0.95rem;
+    }
+
+    .contact-form h3 {
+        font-size: 1.5rem;
+    }
+}
