@@ -34,9 +34,69 @@ function updateNavbarState() {
 }
 window.addEventListener('scroll', updateNavbarState);
 
+function imagesLoaded(container) {
+    const imgs = Array.from(container.querySelectorAll('img'));
+    if (imgs.length === 0) return Promise.resolve();
+    return Promise.all(imgs.map(img => {
+        if (img.complete) return Promise.resolve();
+        return new Promise(resolve => {
+            img.addEventListener('load', resolve, { once: true });
+            img.addEventListener('error', resolve, { once: true });
+        });
+    }));
+}
+
+function stopMarqueeAnimator(marquee) {
+    if (!marquee) return;
+    if (marquee._marqueeRafId) {
+        cancelAnimationFrame(marquee._marqueeRafId);
+    }
+    marquee._marqueeRafId = null;
+    marquee._marqueeState = null;
+    if (marquee._marqueeHandlers) {
+        marquee.removeEventListener('mouseenter', marquee._marqueeHandlers.enter);
+        marquee.removeEventListener('mouseleave', marquee._marqueeHandlers.leave);
+    }
+    marquee._marqueeHandlers = null;
+    marquee.style.transform = '';
+}
+
+function startMarqueeAnimator(marquee, sequenceWidth, speedPxPerSec) {
+    stopMarqueeAnimator(marquee);
+
+    let last = null;
+    let offset = 0;
+    let paused = false;
+
+    const onEnter = () => { paused = true; };
+    const onLeave = () => { paused = false; };
+
+    marquee.addEventListener('mouseenter', onEnter, { passive: true });
+    marquee.addEventListener('mouseleave', onLeave, { passive: true });
+    marquee._marqueeHandlers = { enter: onEnter, leave: onLeave };
+
+    function step(ts) {
+        if (last === null) last = ts;
+        const dt = ts - last;
+        last = ts;
+
+        if (!paused) {
+            offset += speedPxPerSec * (dt / 1000);
+            if (offset >= sequenceWidth) offset -= sequenceWidth;
+            marquee.style.transform = `translateX(${-offset}px)`;
+        }
+
+        marquee._marqueeRafId = requestAnimationFrame(step);
+    }
+
+    marquee._marqueeRafId = requestAnimationFrame(step);
+}
+
 function initMarquee() {
     const marquee = document.querySelector('.marquee');
     if (!marquee) return;
+
+    stopMarqueeAnimator(marquee);
 
     if (!marquee.dataset.originalHtml) {
         marquee.dataset.originalHtml = marquee.innerHTML;
@@ -44,50 +104,48 @@ function initMarquee() {
         marquee.innerHTML = marquee.dataset.originalHtml;
     }
 
-    let items = Array.from(marquee.querySelectorAll('.marquee-item'));
-    if (items.length === 0) {
-        marquee.style.animationPlayState = 'paused';
-        return;
-    }
+    imagesLoaded(marquee).then(() => {
+        const sourceItems = Array.from(marquee.querySelectorAll('.marquee-item'));
+        if (sourceItems.length === 0) return;
 
-    const computeTotalWidth = () => {
+        const computeWidth = items => {
+            let total = 0;
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                const style = window.getComputedStyle(item);
+                const ml = parseFloat(style.marginLeft) || 0;
+                const mr = parseFloat(style.marginRight) || 0;
+                total += rect.width + ml + mr;
+            });
+            return total;
+        };
+
+        const containerWidth = marquee.parentElement ? marquee.parentElement.clientWidth : window.innerWidth;
+
+        const originalCount = sourceItems.length;
+        let sequenceWidth = computeWidth(sourceItems);
+
+        const maxLoops = 10;
+        let loops = 0;
+        while (computeWidth(Array.from(marquee.querySelectorAll('.marquee-item'))) < containerWidth * 2 && loops < maxLoops) {
+            sourceItems.forEach(it => marquee.appendChild(it.cloneNode(true)));
+            loops++;
+        }
+
         const allItems = Array.from(marquee.querySelectorAll('.marquee-item'));
-        let total = 0;
-        allItems.forEach(item => {
-            const rect = item.getBoundingClientRect();
-            const style = window.getComputedStyle(item);
-            const ml = parseFloat(style.marginLeft) || 0;
-            const mr = parseFloat(style.marginRight) || 0;
-            total += rect.width + ml + mr;
-        });
-        return { total, count: allItems.length };
-    };
+        const firstSeq = allItems.slice(0, originalCount);
+        sequenceWidth = computeWidth(firstSeq);
 
-    const containerWidth = marquee.parentElement ? marquee.parentElement.clientWidth : window.innerWidth;
-    let { total: totalWidth } = computeTotalWidth();
-    const maxClones = 50;
-    let cloneIndex = 0;
-    const sourceItems = Array.from(marquee.querySelectorAll('.marquee-item'));
+        if (sequenceWidth <= 0) {
+            marquee.style.transform = '';
+            return;
+        }
 
-    while (totalWidth < containerWidth * 2 && cloneIndex < maxClones) {
-        const nodeToClone = sourceItems[cloneIndex % sourceItems.length].cloneNode(true);
-        marquee.appendChild(nodeToClone);
-        totalWidth = computeTotalWidth().total;
-        cloneIndex++;
-    }
-
-    if (totalWidth <= containerWidth) {
-        marquee.style.animationPlayState = 'paused';
-        return;
-    } else {
-        marquee.style.animationPlayState = 'running';
-    }
-
-    const speedPxPerSec = 220;
-    const durationSeconds = Math.max(8, Math.round((totalWidth / 2) / speedPxPerSec));
-    marquee.style.animationDuration = durationSeconds + 's';
-    marquee.style.animationTimingFunction = 'linear';
-    marquee.style.willChange = 'transform';
+        const speedPxPerSec = 150;
+        startMarqueeAnimator(marquee, sequenceWidth, speedPxPerSec);
+    }).catch(() => {
+        marquee.style.transform = '';
+    });
 }
 
 function handleLogos() {
@@ -138,6 +196,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let resizeTimer;
     window.addEventListener('resize', function () {
         clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(initMarquee, 200);
+        resizeTimer = setTimeout(() => {
+            initMarquee();
+        }, 220);
     });
 });

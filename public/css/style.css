@@ -207,16 +207,9 @@ body {
     will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
-    animation-name: marquee;
-    animation-duration: 40s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-play-state: running;
 }
 
-.marquee:hover {
-    animation-play-state: paused;
-}
+
 
 .marquee-item {
     display: inline-flex;
@@ -231,14 +224,6 @@ body {
     transform: scale(1.05);
 }
 
-@keyframes marquee {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
-}
 
 @media (max-width: 768px) {
     .marquee-container {
