@@ -141,7 +141,8 @@ function initMarquee() {
             return;
         }
 
-        const speedPxPerSec = 150;
+        const speedPxPerSec = 100;
+
         startMarqueeAnimator(marquee, sequenceWidth, speedPxPerSec);
     }).catch(() => {
         marquee.style.transform = '';
