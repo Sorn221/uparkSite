@@ -14,7 +14,8 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">UPARK</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -39,7 +40,7 @@
         </div>
     </nav>
 
-        <!-- Герой секция -->
+    <!-- Герой секция -->
     <section class="hero-section">
         <div class="container">
             <div class="row align-items-center">
@@ -51,7 +52,6 @@
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
                     <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <!-- Индикаторы -->
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
                             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
@@ -64,8 +64,7 @@
                             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="8"></button>
                             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="9"></button>
                         </div>
-                        
-                        <!-- Слайды -->
+
                         <div class="carousel-inner rounded-3 shadow">
                             <div class="carousel-item active">
                                 <img src="public/img/projects_1.jpg" class="d-block w-100 hero-slide-img" alt="Проект Upark 1">
@@ -98,8 +97,7 @@
                                 <img src="public/img/projects_10.jpg" class="d-block w-100 hero-slide-img" alt="Проект Upark 10">
                             </div>
                         </div>
-                        
-                        <!-- Кнопки навигации -->
+
                         <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Предыдущий</span>
@@ -114,7 +112,7 @@
         </div>
     </section>
 
-        <!-- Бегущая строка с партнерами -->
+    <!-- Бегущая строка с партнерами -->
     <div class="partners-title-section">
         <div class="container">
             <h2 class="partners-title text-center">Заказчики и партнеры</h2>
@@ -155,7 +153,6 @@
             <div class="marquee-item">
                 <img src="public/img/complogo_11.jpg" alt="Партнер 11" class="partner-logo">
             </div>
-            <!-- Дублируем элементы для бесшовной анимации -->
             <div class="marquee-item">
                 <img src="public/img/complogo_1.jpg" alt="Партнер 1" class="partner-logo">
             </div>
@@ -195,42 +192,54 @@
     <!-- О компании -->
     <section id="about" class="py-5">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
-                    <h2 class="section-title">О компании Upark</h2>
-                    <p class="lead">Мы - команда профессионалов, создающая комфортную и функциональную среду для городских пространств, жилых комплексов и коммерческих объектов.</p>
-                    <p>Собственное производство позволяет нам контролировать каждый этап создания продукции - от проектирования до монтажа. Мы работаем с различными материалами: деревом, металлом, композитами, создавая уникальные и долговечные решения.</p>
-                    <div class="row mt-4">
-                        <div class="col-md-6">
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Собственное производство</li>
-                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Быстрый расчет заявок</li>
-                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Цены без посредников</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Любые сложные формы</li>
-                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Собственный автопарк</li>
-                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Гарантия качества</li>
-                            </ul>
-                        </div>
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">О компании Upark</h2>
+
+            <div class="about-grid">
+                <div class="about-item" data-aos="fade-right">
+                    <div class="about-img">
+                        <img src="public/img/proizvodstvo.jpg" alt="Производство Upark" loading="lazy">
+                    </div>
+                    <div class="about-text">
+                        <h3>Собственное производство</h3>
+                        <p>Мы контролируем каждый этап: проектирование, подготовка материалов, производство и монтаж. Это позволяет быстро адаптировать решения под задачу клиента и обеспечить стабильное качество.</p>
+                        <ul>
+                            <li>Собственные цеха и оборудование</li>
+                            <li>Контроль качества на каждом этапе</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="row">
-                        <div class="col-6 mb-4">
-                            <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Производство Upark" class="img-fluid rounded shadow">
-                        </div>
-                        <div class="col-6 mt-4">
-                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Проекты Upark" class="img-fluid rounded shadow">
-                        </div>
-                        <div class="col-6">
-                            <img src="https://images.unsplash.com/photo-1581094794358-89ba7bfd0b6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Мебель Upark" class="img-fluid rounded shadow">
-                        </div>
-                        <div class="col-6 mt-4">
-                            <img src="https://images.unsplash.com/photo-1581094792910-9d6b0e2b3b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="МАФ Upark" class="img-fluid rounded shadow">
-                        </div>
+
+                <div class="about-item reverse" data-aos="fade-left">
+                    <div class="about-img">
+                        <img src="public/img/proizvodstvo_2.jpg" alt="Проекты Upark" loading="lazy">
+                    </div>
+                    <div class="about-text">
+                        <h3>Индивидуальные проекты</h3>
+                        <p>Разрабатываем уникальные решения под архитектуру и бренд заказчика — от концепта до серийного выпуска. Работаем с деревом, металлом, композитами и текстилем.</p>
+                        <ul>
+                            <li>Дизайн и визуализация</li>
+                            <li>Инженерные расчёты и прототипирование</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="about-item" data-aos="fade-right">
+                    <div class="about-img">
+                        <img src="public/img/proizvodstvo_3.jpg" alt="Мебель Upark" loading="lazy">
+                    </div>
+                    <div class="about-text">
+                        <h3>Качество и долговечность</h3>
+                        <p>Мы используем проверенные материалы и технологии обработки, чтобы изделия служили годами в уличных и общественных условиях, требовательных к износостойкости.</p>
+                    </div>
+                </div>
+
+                <div class="about-item reverse" data-aos="fade-left">
+                    <div class="about-img">
+                        <img src="public/img/proizvodstvo_4.jpg" alt="МАФ Upark" loading="lazy">
+                    </div>
+                    <div class="about-text">
+                        <h3>Быстрое внедрение</h3>
+                        <p>Слаженная команда позволяет нам аккуратно и в срок монтировать объекты любой сложности по всей России.</p>
                     </div>
                 </div>
             </div>
@@ -303,7 +312,7 @@
                             <div class="services-icon">
                                 <i class="fas fa-concierge-bell"></i>
                             </div>
-                            <h4 class="card-title">Мебель для HoReCa</h4>
+                            <h4 class="card-title">Мебель для заведений общественного питания</h4>
                             <p class="card-text">Стулья, столы, диваны, кресла, барные стойки для ресторанов, кафе, баров.</p>
                         </div>
                     </div>
@@ -319,16 +328,16 @@
             <div class="row">
                 <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-card">
-                        <img src="" class="project-img" alt="Скейт-парк">
+                        <img src="public/img/skatepark.jpg" class="project-img" alt="Скейт-парк">
                         <div class="p-3">
                             <h5>Скейт-парки</h5>
-                            <p>Реализованные проекты в Новом Осколе, Реже, Сургуте и других городах</p>
+                            <p>Площадки для экстремального спорта</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-card">
-                        <img src="/public/img/det_plosh_1.jpg" class="project-img" alt="Детская площадка">
+                        <img src="public/img/det_plosh_1.jpg" class="project-img" alt="Детская площадка">
                         <div class="p-3">
                             <h5>Детские площадки</h5>
                             <p>Игровые зоны для жилых комплексов и общественных пространств</p>
@@ -337,7 +346,7 @@
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="project-card">
-                        <img src="/public/img/street_mebel.jpg" class="project-img" alt="Уличная мебель">
+                        <img src="public/img/street_mebel.jpg" class="project-img" alt="Уличная мебель">
                         <div class="p-3">
                             <h5>Уличная мебель</h5>
                             <p>Скамейки, урны, велопарковки для городской среды</p>
@@ -346,16 +355,16 @@
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-card">
-                        <img src="" class="project-img" alt="Спортивные объекты">
+                        <img src="public/img/konstruct.jpg" class="project-img" alt="Спортивные объекты">
                         <div class="p-3">
-                            <h5>Спортивные объекты</h5>
-                            <p>Памп-треки, воркаут-зоны, футбольные ворота</p>
+                            <h5>Сложные конструкции и фигуры</h5>
+                            <p>Из композитных материалов, акрила, пластика и стеклопластика</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-card">
-                        <img src="/public/img/tc_mebel.jpg" class="project-img" alt="Мебель для ТЦ">
+                        <img src="public/img/tc_mebel.jpg" class="project-img" alt="Мебель для ТЦ">
                         <div class="p-3">
                             <h5>Мебель для ТЦ</h5>
                             <p>Зоны отдыха, релакс-зоны, элементы навигации</p>
@@ -364,7 +373,7 @@
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="project-card">
-                        <img src="/public/img/art_obj.jpg" class="project-img" alt="Арт-объекты">
+                        <img src="public/img/art_obj.jpg" class="project-img" alt="Арт-объекты">
                         <div class="p-3">
                             <h5>Арт-объекты</h5>
                             <p>Декоративные конструкции, скульптуры, элементы брендинга</p>
@@ -374,6 +383,29 @@
             </div>
             <div class="text-center mt-4" data-aos="fade-up">
                 <a href="#contacts" class="btn btn-primary-custom">Обсудить ваш проект</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Материалы -->
+    <section id="materials" class="materials-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Материалы</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="materials-content" data-aos="fade-up" data-aos-delay="100">
+                        <ul class="materials-list">
+                            <li>массив дерева (сосна, береза, бук, ясень, дуб и др.)</li>
+                            <li>фанера, МДФ, ДСП</li>
+                            <li>металл (сталь, алюминий, нержавеющая сталь и др.)</li>
+                            <li>текстиль, ППУ</li>
+                            <li>композиты (стеклопластик, карбон)</li>
+                            <li>канаты (плетёные, витые)</li>
+                            <li>ПЭТ, ABS, HIPS, акрил, монолитный поликарбонат и др.</li>
+                            <li>скульптурный гипс</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -388,8 +420,8 @@
                         <div class="advantage-icon">
                             <i class="fas fa-industry"></i>
                         </div>
-                        <h4>Собственное производство</h4>
-                        <p>Полный цикл производства от проектирования до монтажа</p>
+                        <h4>Идеи по вашим эскизам</h4>
+                        <p>Реализуем смелые идеи по вашим эскизам, дизайн проектам, чертежам, иным материалам</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
@@ -415,8 +447,8 @@
                         <div class="advantage-icon">
                             <i class="fas fa-truck"></i>
                         </div>
-                        <h4>Свой автопарк</h4>
-                        <p>Доставка по всей России собственным транспортом</p>
+                        <h4>Подбор материалов</h4>
+                        <p>Разрабатываем эффективные конструктивные решения</p>
                     </div>
                 </div>
             </div>
@@ -433,7 +465,6 @@
                         <h3 class="mb-4">Готовы обсудить ваш проект?</h3>
                         <p class="mb-4 text-muted">Напишите нам в WhatsApp и мы ответим в течение 15 минут</p>
 
-                        <!-- Кнопка WhatsApp -->
                         <a href="https://wa.me/79527350536?text=Здравствуйте!%20Я%20заинтересован%20в%20услугах%20Upark.%20Хочу%20обсудить%20проект."
                            class="btn btn-whatsapp btn-lg"
                            target="_blank"
