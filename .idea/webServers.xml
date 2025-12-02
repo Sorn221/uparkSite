@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="0f65ac03-7b50-4cff-b55a-79d3eafea9cd" name="server">
+        <fileTransfer rootFolder="/home/u37230/uparkmsk.ru/www" accessType="SFTP" host="be2.netangels.ru" port="22" sshConfigId="b9a449b2-0c86-4a6f-a573-ef5419efdb1e" sshConfig="u37230@be2.netangels.ru:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
